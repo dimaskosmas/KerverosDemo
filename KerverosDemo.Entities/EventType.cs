@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KerverosDemo.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace KerverosDemo.Entities
         public string EventCode { get; set; }
         [MaxLength(80)]
         public string Description { get; set; }
+        public EventTypeReffers ReffersTo { get; set; }
 
         public EventType(int id, string eventCode, string description)
         {

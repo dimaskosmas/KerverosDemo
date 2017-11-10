@@ -47,8 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomersRepository.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="EntityMaps\CustomerMap.cs" />
+    <Compile Include="EntityMaps\EventTypeMap.cs" />
+    <Compile Include="EntityMaps\PartitionMap.cs" />
+    <Compile Include="EntityMaps\ReceivedSignal.cs" />
+    <Compile Include="EntityMaps\UserMap.cs" />
+    <Compile Include="EntityMaps\ZoneMap.cs" />
+    <Compile Include="Migrations\201711101055385_initial.cs" />
+    <Compile Include="Migrations\201711101055385_initial.Designer.cs">
+      <DependentUpon>201711101055385_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MockDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceivedSignalsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KerverosDemo.Data.Common\KerverosDemo.Data.Common.csproj">
@@ -63,6 +77,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711101055385_initial.resx">
+      <DependentUpon>201711101055385_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

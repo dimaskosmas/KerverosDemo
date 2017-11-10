@@ -9,6 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Entities", "Ke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Data.Common", "KerverosDemo.Data.Common\KerverosDemo.Data.Common.csproj", "{81F06C63-B903-4BDF-947B-9F0D92075E9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Console", "ConsoleApp1\KerverosDemo.Console.csproj", "{D3AC285E-04F8-46C3-8CF2-5E41FE574341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Core", "KerverosDemo.Core\KerverosDemo.Core.csproj", "{014CEF65-02A3-4951-885D-C2B7F7D38FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Receivers", "KerverosDemo.Receivers\KerverosDemo.Receivers.csproj", "{DFC42CC4-C31A-4E04-B553-97AAFD3D1059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Receivers.Common", "KerverosDemo.Receivers.Common\KerverosDemo.Receivers.Common.csproj", "{6C91C744-4610-4C51-85CF-BD0A0191F7D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerverosDemo.Data.Tests", "KerverosDemo.Data.Tests\KerverosDemo.Data.Tests.csproj", "{52EC3128-FA68-4E22-9BF0-4381B2AB3300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +37,26 @@ Global
 		{81F06C63-B903-4BDF-947B-9F0D92075E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F06C63-B903-4BDF-947B-9F0D92075E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F06C63-B903-4BDF-947B-9F0D92075E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AC285E-04F8-46C3-8CF2-5E41FE574341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AC285E-04F8-46C3-8CF2-5E41FE574341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AC285E-04F8-46C3-8CF2-5E41FE574341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AC285E-04F8-46C3-8CF2-5E41FE574341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014CEF65-02A3-4951-885D-C2B7F7D38FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014CEF65-02A3-4951-885D-C2B7F7D38FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014CEF65-02A3-4951-885D-C2B7F7D38FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014CEF65-02A3-4951-885D-C2B7F7D38FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC42CC4-C31A-4E04-B553-97AAFD3D1059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC42CC4-C31A-4E04-B553-97AAFD3D1059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC42CC4-C31A-4E04-B553-97AAFD3D1059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC42CC4-C31A-4E04-B553-97AAFD3D1059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C91C744-4610-4C51-85CF-BD0A0191F7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C91C744-4610-4C51-85CF-BD0A0191F7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C91C744-4610-4C51-85CF-BD0A0191F7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C91C744-4610-4C51-85CF-BD0A0191F7D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52EC3128-FA68-4E22-9BF0-4381B2AB3300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52EC3128-FA68-4E22-9BF0-4381B2AB3300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52EC3128-FA68-4E22-9BF0-4381B2AB3300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52EC3128-FA68-4E22-9BF0-4381B2AB3300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

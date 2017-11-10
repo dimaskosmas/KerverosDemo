@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KerverosDemo.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace KerverosDemo.Entities
         [MaxLength(150)]
         public string Description { get; set; }
         public string RawData { get; set; }
+        public EventTypeReffers ReffersTo { get; set; }
 
         public ReceivedSignal(int id, string customerCode, DateTime receivedAt, string eventCode, int partitionCode, int zoneCode, int userCode, string description, string rawData)
         {

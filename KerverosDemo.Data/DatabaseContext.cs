@@ -1,4 +1,5 @@
-﻿using KerverosDemo.Entities;
+﻿using KerverosDemo.Data.EntityMaps;
+using KerverosDemo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,14 +9,29 @@ using System.Threading.Tasks;
 
 namespace KerverosDemo.Data
 {
-    class DatabaseContext : DbContext
+    public class DatabaseContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<EventType> EventTypes { get; set; }
-        public DbSet<Partition> Partitions { get; set; }
-        public DbSet<ReceivedSignal> ReceivedSignals { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Zone> Zones { get; set; }
+        public DatabaseContext():base("Default")
+        {
+            
+        }
 
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<EventType> EventTypes { get; set; }
+        public virtual DbSet<Partition> Partitions { get; set; }
+        public virtual DbSet<ReceivedSignal> ReceivedSignals { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Zone> Zones { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CustomerMap());
+            modelBuilder.Configurations.Add(new PartitionMap());
+            modelBuilder.Configurations.Add(new ZoneMap());
+            modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new ReceivedSignalMap());
+            modelBuilder.Configurations.Add(new EventTypeMap());
+        }
     }
+        
 }
