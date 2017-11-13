@@ -13,6 +13,7 @@ namespace KerverosDemo.Data.EntityMaps
                 .WithMany()
                 .HasForeignKey(s => s.CustomerCode);
 
+            Property(p => p.UserCode).IsRequired();
             Property(p => p.CustomerCode).HasMaxLength(16).IsRequired();
             Property(p => p.Name).HasMaxLength(60).IsRequired();
             Property(p => p.Phone).HasMaxLength(20).IsRequired();

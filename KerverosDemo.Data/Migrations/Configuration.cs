@@ -2,11 +2,8 @@
 {
     using KerverosDemo.Entities;
     using KerverosDemo.Entities.Enums;
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<KerverosDemo.Data.DatabaseContext>
     {
@@ -28,7 +25,11 @@
             var EventTypes = new List<EventType>()
             {
                 new EventType(1,"E110","Φωτιά"){ReffersTo = EventTypeReffers.Zone  },
-                new EventType(2,"E401","Αφοπλισμός από χρήστη"){ReffersTo = EventTypeReffers.User }
+                new EventType(2,"E401","Αφοπλισμός από χρήστη"){ReffersTo = EventTypeReffers.User },
+                new EventType(3,"R110","Αποκατάσταση φωτιάς"){ReffersTo = EventTypeReffers.Zone  },
+                new EventType(4,"R401","Οπλισμός από χρήστη"){ReffersTo = EventTypeReffers.User  },
+
+
             };
             EventTypes.ForEach(s => context.EventTypes.AddOrUpdate(s));
             context.SaveChanges();
@@ -41,6 +42,32 @@
             };
             Zones.ForEach(s => context.Zones.AddOrUpdate(s));
             context.SaveChanges();
+
+            var Partitions = new List<Partition>()
+            {
+                new Partition(1, "5000",1,1,"Partition 1"),
+                new Partition(2, "5000",1,2,"Partition 2"),
+                new Partition(3, "5000",1,3,"Partition 3"),
+                new Partition(4, "5000",2,1,"Partition 1"),
+                new Partition(5, "5000",2,2,"Partition 1"),
+                new Partition(6, "5000",2,3,"Partition 1"),
+                new Partition(7, "1001",1,1,"Partition 1"),
+                new Partition(8, "1001",1,2,"Partition 2"),
+            };
+            Partitions.ForEach(s => context.Partitions.AddOrUpdate(s));
+            context.SaveChanges();
+
+            var ReceivedSignals = new List<ReceivedSignal>()
+            {
+                new ReceivedSignal(1,"5000",System.DateTime.Now,"E401",1,0,2,"Afoplisa","5002 185000E40101002"),
+                new ReceivedSignal(1,"5000",System.DateTime.Now,"R401",1,0,2,"Oplisa","5003 185000R40101003"),
+                new ReceivedSignal(1,"5000",System.DateTime.Now,"E110",0,1,2,"Fotia","5004 185000E11001002"),
+                new ReceivedSignal(1,"5000",System.DateTime.Now,"R110",0,1,2,"Fotia_off","5005 185000R11001001"),
+            };                                                          
+            ReceivedSignals.ForEach(s => context.ReceivedSignals.AddOrUpdate());
+            context.SaveChanges();
+
+
         }
     }
 }

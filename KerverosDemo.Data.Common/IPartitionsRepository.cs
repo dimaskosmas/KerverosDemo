@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace KerverosDemo.Data.Common
 {
-    public interface IReceivedSignalsRepository
+    public interface IPartitionsRepository
     {
-        AnalyzedSignal AnalyzeReceivedSignal(IncomingSignal signal);
+        Partition[] GetPartitions(string customerCode);
+
     }
 }

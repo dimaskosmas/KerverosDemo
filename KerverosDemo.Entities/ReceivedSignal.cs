@@ -10,17 +10,13 @@ namespace KerverosDemo.Entities
 {
     public class ReceivedSignal
     {
-        [Key]
         public int Id { get; set; }
-        [MaxLength(16)]
         public string CustomerCode { get; set; }
         public DateTime ReceivedAt { get; set; }
-        [MaxLength(10)]
         public string EventCode { get; set; }
         public int PartitionCode { get; set; }
-        public int ZoneCode { get; set; }
-        public int UserCode { get; set; }
-        [MaxLength(150)]
+        public int? ZoneCode { get; set; }
+        public int? UserCode { get; set; }
         public string Description { get; set; }
         public string RawData { get; set; }
         public EventTypeReffers ReffersTo { get; set; }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace KerverosDemo.Data.Common
 {
-    public interface IReceivedSignalsRepository
+    public interface IEventTypeRepository
     {
-        AnalyzedSignal AnalyzeReceivedSignal(IncomingSignal signal);
+        EventType[] GetEventType();
     }
 }

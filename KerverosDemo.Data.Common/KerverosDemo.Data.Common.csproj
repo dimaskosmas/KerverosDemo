@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICustomersRepository.cs" />
+    <Compile Include="IEventTypeRepository.cs" />
+    <Compile Include="IPartitionsRepository.cs" />
     <Compile Include="IReceivedSignalsRepository.cs" />
+    <Compile Include="IZonesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

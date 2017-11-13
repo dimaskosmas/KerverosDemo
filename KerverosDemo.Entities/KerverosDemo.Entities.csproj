@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzedSignal.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Enums\EventTypeReffers.cs" />
     <Compile Include="EventType.cs" />
+    <Compile Include="Extensions\AnalyzedSignalExtensions.cs" />
     <Compile Include="IncomingSignal.cs" />
     <Compile Include="Partition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
