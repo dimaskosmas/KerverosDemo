@@ -47,11 +47,13 @@ namespace KerverosDemo.Data.Tests
         [TestMethod]
         public void CanAnalyzeSignal()
         {
-            var signal = new IncomingSignal();
-            signal.CustomerCode = "5000";
-            signal.EventCode = "E100";
-            signal.PartitionCode = "01";
-            signal.ZoneUserCode = "1";
+            var signal = new IncomingSignal
+            {
+                CustomerCode = "5000",
+                EventCode = "E100",
+                PartitionCode = "01",
+                ZoneUserCode = "1"
+            };
 
             var repo = new ReceivedSignalsRepository();
             var result = repo.AnalyzeReceivedSignal(signal);
