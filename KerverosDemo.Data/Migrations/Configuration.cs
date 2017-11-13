@@ -12,7 +12,7 @@
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(KerverosDemo.Data.DatabaseContext context)
+        protected override void Seed(DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -45,14 +45,14 @@
 
             var Partitions = new List<Partition>()
             {
-                new Partition(1, "5000",1,1,"Partition 1"),
-                new Partition(2, "5000",1,2,"Partition 2"),
-                new Partition(3, "5000",1,3,"Partition 3"),
-                new Partition(4, "5000",2,1,"Partition 1"),
-                new Partition(5, "5000",2,2,"Partition 1"),
-                new Partition(6, "5000",2,3,"Partition 1"),
-                new Partition(7, "1001",1,1,"Partition 1"),
-                new Partition(8, "1001",1,2,"Partition 2"),
+                new Partition(1, "5000",1,"Partition 1"),
+                new Partition(2, "5000",2,"Partition 2"),
+                new Partition(3, "5000",3,"Partition 3"),
+                new Partition(4, "5000",1,"Partition 1"),
+                new Partition(5, "5000",2,"Partition 1"),
+                new Partition(6, "5000",3,"Partition 1"),
+                new Partition(7, "1001",1,"Partition 1"),
+                new Partition(8, "1001",2,"Partition 2"),
             };
             Partitions.ForEach(s => context.Partitions.AddOrUpdate(s));
             context.SaveChanges();

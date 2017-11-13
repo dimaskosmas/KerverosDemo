@@ -50,7 +50,7 @@ namespace KerverosDemo.Data.Tests
             var signal = new IncomingSignal
             {
                 CustomerCode = "5000",
-                EventCode = "E100",
+                EventCode = "E110",
                 PartitionCode = "01",
                 ZoneUserCode = "1"
             };

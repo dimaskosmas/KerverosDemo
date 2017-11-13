@@ -10,7 +10,7 @@ namespace KerverosDemo.Data.EntityMaps
             HasKey(p => new { p.CustomerCode, p.ZoneCode });
 
             HasRequired(p => p.Customer)
-                .WithMany()
+                .WithMany(p=>p.Zones)
                 .HasForeignKey(s => s.CustomerCode);
 
             Property(p => p.CustomerCode).HasMaxLength(16).IsRequired();

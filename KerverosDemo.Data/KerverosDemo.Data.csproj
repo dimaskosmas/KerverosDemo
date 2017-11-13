@@ -56,13 +56,9 @@
     <Compile Include="EntityMaps\UserMap.cs" />
     <Compile Include="EntityMaps\ZoneMap.cs" />
     <Compile Include="EventTypeRepository.cs" />
-    <Compile Include="Migrations\201711101055385_initial.cs" />
-    <Compile Include="Migrations\201711101055385_initial.Designer.cs">
-      <DependentUpon>201711101055385_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711130812503_ReceivedSignalRepository changes.cs" />
-    <Compile Include="Migrations\201711130812503_ReceivedSignalRepository changes.Designer.cs">
-      <DependentUpon>201711130812503_ReceivedSignalRepository changes.cs</DependentUpon>
+    <Compile Include="Migrations\201711130928081_initial.cs" />
+    <Compile Include="Migrations\201711130928081_initial.Designer.cs">
+      <DependentUpon>201711130928081_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockDatabase.cs" />
@@ -90,11 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711101055385_initial.resx">
-      <DependentUpon>201711101055385_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711130812503_ReceivedSignalRepository changes.resx">
-      <DependentUpon>201711130812503_ReceivedSignalRepository changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711130928081_initial.resx">
+      <DependentUpon>201711130928081_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

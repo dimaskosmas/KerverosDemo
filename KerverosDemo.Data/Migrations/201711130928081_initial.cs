@@ -18,48 +18,17 @@ namespace KerverosDemo.Data.Migrations
                 .PrimaryKey(t => t.CustomerCode);
             
             CreateTable(
-                "dbo.EventTypes",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        EventCode = c.String(nullable: false, maxLength: 10),
-                        Description = c.String(nullable: false, maxLength: 80),
-                        ReffersTo = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.EventCode, unique: true, name: "EventCodeIdx");
-            
-            CreateTable(
                 "dbo.Partitions",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         CustomerCode = c.String(nullable: false, maxLength: 16),
-                        ZoneCode = c.Int(nullable: false),
                         PartitionCode = c.Int(nullable: false),
                         Description = c.String(nullable: false, maxLength: 80),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Customers", t => t.CustomerCode, cascadeDelete: true)
                 .Index(t => t.CustomerCode);
-            
-            CreateTable(
-                "dbo.ReceivedSignals",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        CustomerCode = c.String(nullable: false, maxLength: 16),
-                        ReceivedAt = c.DateTime(nullable: false),
-                        EventCode = c.String(nullable: false, maxLength: 10),
-                        PartitionCode = c.Int(nullable: false),
-                        ZoneCode = c.Int(),
-                        UserCode = c.Int(),
-                        Description = c.String(nullable: false, maxLength: 150),
-                        RawData = c.String(nullable: false),
-                        ReffersTo = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => new { t.CustomerCode, t.EventCode }, name: "CustomerEventIdx");
             
             CreateTable(
                 "dbo.Users",
@@ -91,6 +60,36 @@ namespace KerverosDemo.Data.Migrations
                 .ForeignKey("dbo.Customers", t => t.CustomerCode, cascadeDelete: true)
                 .Index(t => t.CustomerCode);
             
+            CreateTable(
+                "dbo.EventTypes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EventCode = c.String(nullable: false, maxLength: 10),
+                        Description = c.String(nullable: false, maxLength: 80),
+                        ReffersTo = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.EventCode, unique: true, name: "EventCodeIdx");
+            
+            CreateTable(
+                "dbo.ReceivedSignals",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CustomerCode = c.String(nullable: false, maxLength: 16),
+                        ReceivedAt = c.DateTime(nullable: false),
+                        EventCode = c.String(nullable: false, maxLength: 10),
+                        PartitionCode = c.Int(nullable: false),
+                        ZoneCode = c.Int(),
+                        UserCode = c.Int(),
+                        Description = c.String(nullable: false, maxLength: 150),
+                        RawData = c.String(nullable: false),
+                        ReffersTo = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => new { t.CustomerCode, t.EventCode }, name: "CustomerEventIdx");
+            
         }
         
         public override void Down()
@@ -98,16 +97,16 @@ namespace KerverosDemo.Data.Migrations
             DropForeignKey("dbo.Zones", "CustomerCode", "dbo.Customers");
             DropForeignKey("dbo.Users", "CustomerCode", "dbo.Customers");
             DropForeignKey("dbo.Partitions", "CustomerCode", "dbo.Customers");
+            DropIndex("dbo.ReceivedSignals", "CustomerEventIdx");
+            DropIndex("dbo.EventTypes", "EventCodeIdx");
             DropIndex("dbo.Zones", new[] { "CustomerCode" });
             DropIndex("dbo.Users", new[] { "CustomerCode" });
-            DropIndex("dbo.ReceivedSignals", "CustomerEventIdx");
             DropIndex("dbo.Partitions", new[] { "CustomerCode" });
-            DropIndex("dbo.EventTypes", "EventCodeIdx");
+            DropTable("dbo.ReceivedSignals");
+            DropTable("dbo.EventTypes");
             DropTable("dbo.Zones");
             DropTable("dbo.Users");
-            DropTable("dbo.ReceivedSignals");
             DropTable("dbo.Partitions");
-            DropTable("dbo.EventTypes");
             DropTable("dbo.Customers");
         }
     }

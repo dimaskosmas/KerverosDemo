@@ -12,7 +12,7 @@ namespace KerverosDemo.Entities.Extensions
         {
             var description = string.Empty;
             if (signal != null)
-                description = $"{signal.EventType?.Description} {signal.Partition.Description} {signal.User?.Name} {signal.Zone?.Description}";
+                description = $"{signal.EventType?.Description} {signal.Partition?.Description} {signal.User?.Name} {signal.Zone?.Description}";
             return description;
         }
     }
