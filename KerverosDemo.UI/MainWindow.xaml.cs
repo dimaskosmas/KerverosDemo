@@ -23,6 +23,9 @@ namespace KerverosDemo.UI
         public MainWindow()
         {
             InitializeComponent();
+            string initialScreen = string.Empty;
+            initialScreen = "Kerveros";
+            SplashScreen initial = new SplashScreen(initialScreen);
         }
     }
 }
