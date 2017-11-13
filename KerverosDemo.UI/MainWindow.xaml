@@ -5,8 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KerverosDemo.UI"
         mc:Ignorable="d"
-        Title="Kerveros" Height="350" Width="525" >
-    <Grid Margin="10" Opacity="90">
-        <DataGrid Name="Kerveros" VerticalAlignment="Top"></DataGrid>
-    </Grid>
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
 </Window>

@@ -28,6 +28,7 @@ namespace KerverosDemo.Data.EntityMaps
                 .WithRequired(s => s.Customer)
                 .HasForeignKey(s => s.CustomerCode)
                 .WillCascadeOnDelete(true);
+
         }
     }
 }

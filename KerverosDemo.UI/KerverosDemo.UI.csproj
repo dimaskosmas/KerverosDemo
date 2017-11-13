@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C333711B-F104-4BB2-A8C6-6C6D05CD9A82}</ProjectGuid>
+    <ProjectGuid>{A61B865B-5971-40AB-B539-B995CD8D0317}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KerverosDemo.UI</RootNamespace>
     <AssemblyName>KerverosDemo.UI</AssemblyName>
@@ -62,6 +62,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="KerverosDemoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KerverosDemoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -85,6 +90,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="KerverosDemoDataSet.xsc">
+      <DependentUpon>KerverosDemoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="KerverosDemoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KerverosDemoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KerverosDemoDataSet.xss">
+      <DependentUpon>KerverosDemoDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

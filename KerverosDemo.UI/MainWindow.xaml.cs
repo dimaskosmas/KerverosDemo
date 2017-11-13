@@ -23,9 +23,29 @@ namespace KerverosDemo.UI
         public MainWindow()
         {
             InitializeComponent();
-            string initialScreen = string.Empty;
-            initialScreen = "Kerveros";
-            SplashScreen initial = new SplashScreen(initialScreen);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            KerverosDemo.UI.KerverosDemoDataSet kerverosDemoDataSet = ((KerverosDemo.UI.KerverosDemoDataSet)(this.FindResource("kerverosDemoDataSet")));
+            // Load data into the table Customers. You can modify this code as needed.
+            KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter kerverosDemoDataSetCustomersTableAdapter = new KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter();
+            kerverosDemoDataSetCustomersTableAdapter.Fill(kerverosDemoDataSet.Customers);
+            System.Windows.Data.CollectionViewSource customersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("customersViewSource")));
+            customersViewSource.View.MoveCurrentToFirst();
+            KerverosDemo.UI.KerverosDemoDataSet kerverosDemoDataSet = ((KerverosDemo.UI.KerverosDemoDataSet)(this.FindResource("kerverosDemoDataSet")));
+            // Load data into the table Customers. You can modify this code as needed.
+            KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter kerverosDemoDataSetCustomersTableAdapter = new KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter();
+            kerverosDemoDataSetCustomersTableAdapter.Fill(kerverosDemoDataSet.Customers);
+            System.Windows.Data.CollectionViewSource customersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("customersViewSource")));
+            customersViewSource.View.MoveCurrentToFirst();
+            KerverosDemo.UI.KerverosDemoDataSet kerverosDemoDataSet = ((KerverosDemo.UI.KerverosDemoDataSet)(this.FindResource("kerverosDemoDataSet")));
+            // Load data into the table Customers. You can modify this code as needed.
+            KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter kerverosDemoDataSetCustomersTableAdapter = new KerverosDemo.UI.KerverosDemoDataSetTableAdapters.CustomersTableAdapter();
+            kerverosDemoDataSetCustomersTableAdapter.Fill(kerverosDemoDataSet.Customers);
+            System.Windows.Data.CollectionViewSource customersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("customersViewSource")));
+            customersViewSource.View.MoveCurrentToFirst();
         }
     }
 }
