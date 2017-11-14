@@ -22,6 +22,6 @@
             <Label Content="Address" />
             <TextBox Text="{Binding Address}"/>
         </UniformGrid>
-    </Grid>
+    </Grid>`
 
 </Window>
