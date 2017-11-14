@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KerverosDemo.UI.Model
+namespace KerverosDemo.UI.Common
 {
-    class UserModel
+    public class ViewModelBase : ObjectBase
     {
     }
 }

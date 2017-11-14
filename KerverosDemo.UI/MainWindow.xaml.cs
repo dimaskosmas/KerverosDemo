@@ -1,27 +1,23 @@
-﻿using System.Windows;
+﻿using KerverosDemo.UI.ViewModels;
+using System.Windows;
 
 
 namespace KerverosDemo.UI
-{ 
-   /// <summary>
-   /// Interaction logic for MainWindow.xaml
-   /// </summary>
-
-public partial class MainWindow : Window
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
 
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            var vm = new MainWindowViewModel();
+            vm.Initialize();
+            DataContext = vm;
+        }
+
     }
-
-    private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
-    {
-        ViewModel.StudentViewModel studentViewModelObject = new ViewModel.StudentViewModel();
-
-        studentViewModelObject.LoadStudents();
-
-        StudentViewControl.DataContext = studentViewModelObject;
-    }
-}
 }

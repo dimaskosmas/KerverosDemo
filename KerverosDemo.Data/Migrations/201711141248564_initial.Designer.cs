@@ -13,7 +13,7 @@ namespace KerverosDemo.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711130928081_initial"; }
+            get { return "201711141248564_initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -11,7 +11,7 @@ namespace KerverosDemo.Data
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext():base("Default")
+        public DatabaseContext():base("name=Default")
         {
             
         }

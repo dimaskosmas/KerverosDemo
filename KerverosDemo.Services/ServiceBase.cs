@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KerverosDemo.UI.ViewModel
+namespace KerverosDemo.Services
 {
-    class UserViewModel
+    public class ServiceBase<T>  where T : IService
     {
     }
 }

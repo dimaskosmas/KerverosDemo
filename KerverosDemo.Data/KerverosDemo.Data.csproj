@@ -56,9 +56,9 @@
     <Compile Include="EntityMaps\UserMap.cs" />
     <Compile Include="EntityMaps\ZoneMap.cs" />
     <Compile Include="EventTypeRepository.cs" />
-    <Compile Include="Migrations\201711130928081_initial.cs" />
-    <Compile Include="Migrations\201711130928081_initial.Designer.cs">
-      <DependentUpon>201711130928081_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201711141248564_initial.cs" />
+    <Compile Include="Migrations\201711141248564_initial.Designer.cs">
+      <DependentUpon>201711141248564_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockDatabase.cs" />
@@ -86,8 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711130928081_initial.resx">
-      <DependentUpon>201711130928081_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711141248564_initial.resx">
+      <DependentUpon>201711141248564_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

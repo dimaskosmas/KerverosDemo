@@ -1,28 +1,31 @@
-﻿
-using System.Collections;
+﻿using KerverosDemo.UI.Common;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace KerverosDemo.Entities
+namespace KerverosDemo.UI.DataContracts
 {
-    public class Customer : EntityBase
+    public class Customer : ObjectBase
     {
         private string customerCode;
         private string name;
         private string address;
 
-        public string CustomerCode
-        {
+        public string CustomerCode {
             get
             {
                 return customerCode;
             }
             set
             {
+                if (customerCode.Equals(value)) return;
                 customerCode = value;
                 SetProperty();
             }
         }
-
+        
         public string Name
         {
             get
@@ -31,11 +34,12 @@ namespace KerverosDemo.Entities
             }
             set
             {
+                if (name.Equals(value)) return;
                 name = value;
                 SetProperty();
             }
         }
-
+        
         public string Address
         {
             get
@@ -44,25 +48,10 @@ namespace KerverosDemo.Entities
             }
             set
             {
+                if (address.Equals(value)) return;
                 address = value;
                 SetProperty();
             }
-        }
-
-        public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Zone> Zones { get; set; }
-        public virtual ICollection<Partition> Partitions { get; set; }
-
-        public Customer(string name, string customerCode, string address)
-        {
-            Name = name;
-            CustomerCode = customerCode;
-            Address = address;
-        }
-
-        public Customer()
-        {
-
         }
     }
 }

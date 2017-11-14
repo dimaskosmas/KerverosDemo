@@ -3,12 +3,25 @@
    xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
    xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
    xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views = "clr-namespace:KerverosDemo.UI.Views"
    mc:Ignorable = "d"
    Title = "MainWindow" Height = "350" Width = "525">
 
     <Grid>
-        <views:StudentView x:Name = "StudentViewControl" Loaded = "StudentViewControl_Loaded"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Customers}" Grid.Column="0"
+                  SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="Name"/>
+        <UniformGrid Grid.Column="1" Rows="3" Columns="2" DataContext="{Binding SelectedCustomer}" VerticalAlignment="Top">
+            <Label Content="Code" />
+            <TextBox Text="{Binding CustomerCode}" TextAlignment="Justify" FontSize="12"/>
+            <Label Content="Name" />
+            <TextBox Text="{Binding Name}" />
+            <Label Content="Address" />
+            <TextBox Text="{Binding Address}"/>
+        </UniformGrid>
     </Grid>
 
 </Window>

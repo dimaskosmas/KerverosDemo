@@ -24,8 +24,7 @@ namespace KerverosDemo.Data.EntityMaps
             Property(p => p.ZoneCode).IsOptional();
             Property(p => p.Description).HasMaxLength(150).IsRequired();
             Property(p => p.RawData).IsRequired();
-
-            HasRequired(p => p.CustomerCode);
+            
             Property(p=>p.CustomerCode).HasColumnAnnotation("Index",
                 new IndexAnnotation(new IndexAttribute("CustomerEventIdx") { IsUnique = false, Order = 1 }));
             Property(p => p.EventCode).HasColumnAnnotation("Index",
