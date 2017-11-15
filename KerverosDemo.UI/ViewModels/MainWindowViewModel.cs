@@ -3,6 +3,8 @@ using KerverosDemo.Services;
 using KerverosDemo.UI.Common;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace KerverosDemo.UI.ViewModels
 {
@@ -14,7 +16,7 @@ namespace KerverosDemo.UI.ViewModels
         }
 
         public ObservableCollection<Customer> Customers { get; set; }
-        private Customer selectedCustomer;
+        private Customer selectedCustomer; 
 
         public Customer SelectedCustomer
         {
@@ -30,12 +32,9 @@ namespace KerverosDemo.UI.ViewModels
             }
         }
 
-
         public void Initialize()
         {
-            var service = new CustomerService();
-            var c = service.GetCustomers().ToList();
-            foreach(Customer cust in c)
+            foreach (Customer cust in new CustomerService().GetCustomers().ToList())
             {
                 Customers.Add(cust);
             }

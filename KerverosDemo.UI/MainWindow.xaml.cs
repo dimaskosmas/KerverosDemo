@@ -17,6 +17,7 @@ namespace KerverosDemo.UI
             var vm = new MainWindowViewModel();
             vm.Initialize();
             DataContext = vm;
+
         }
     }
 }

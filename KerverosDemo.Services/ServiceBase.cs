@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace KerverosDemo.Services
 {
-    public class ServiceBase<T>  where T : IService
+    public class ServiceBase<T> where T : IService
     {
+        public ServiceBase()
+        {
+        }
     }
 }
