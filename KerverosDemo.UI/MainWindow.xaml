@@ -4,6 +4,7 @@
    xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
    xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
    mc:Ignorable = "d"
+        xmlns:custom ="clr-namespace:KerverosDemo.UI.Common;assembly=KerverosDemo.UI.Common"
    Title = "MainWindow" Height = "350" Width = "525">
 
     <Grid>
@@ -21,6 +22,12 @@
             <TextBox Text="{Binding Name}" />
             <Label Content="Address" />
             <TextBox Text="{Binding Address}"/>
+            <Button Content = "Add Customer" 
+            Command = "{Binding NavCommand}" 
+            CommandParameter = "orders"></Button>
+            <Button Content = "Delete Customer" 
+            Command = "{Binding NavCommand}" 
+            CommandParameter = "orders"></Button>
         </UniformGrid>
     </Grid>
 

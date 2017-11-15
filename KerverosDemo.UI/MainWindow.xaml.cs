@@ -1,6 +1,6 @@
 ﻿using KerverosDemo.UI.ViewModels;
 using System.Windows;
-
+using System.Windows.Controls;
 
 namespace KerverosDemo.UI
 {
@@ -18,6 +18,5 @@ namespace KerverosDemo.UI
             vm.Initialize();
             DataContext = vm;
         }
-
     }
 }
