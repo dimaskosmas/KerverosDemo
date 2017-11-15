@@ -6,7 +6,8 @@ namespace KerverosDemo.Data.Common
     {
         Customer[] GetCustomers();
         Customer GetCustomer(string customerCode);
-        void AddUpdateCustomer(Customer customer);
-        void DeleteCustomer(Customer customerCode);
+        Customer AddCustomer(Customer customer);
+        Customer SaveCustomer(Customer customer);
+        Customer DeleteCustomer(Customer customerCode);
     }
 }

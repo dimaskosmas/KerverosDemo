@@ -1,5 +1,7 @@
 ﻿using KerverosDemo.Data.Common;
 using KerverosDemo.Entities;
+using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace KerverosDemo.Data
@@ -22,26 +24,58 @@ namespace KerverosDemo.Data
             }
         }
 
-        public void AddUpdateCustomer(Customer customer)
+        public Customer AddCustomer(Customer customer)
         {
             using (var db = new DatabaseContext())
             {
-                if (db.Customers.Find(customer.CustomerCode) == null)
+                var existing = db.Customers.FirstOrDefault(s=> s.CustomerCode.Equals(customer.CustomerCode));
+                if (existing == null)
                 {
-                    db.Customers.Add(customer);
+                    try
+                    {
+                        var c = db.Customers.Add(customer);
+                        db.SaveChanges();
+                        return c;
+                    }
+                    catch (Exception e)
+                    {
+
+                        Debug.WriteLine(e);
+                    }
                 }
-                else
-                {
-                    db.Customers.Remove(customer);
-                    db.Customers.Add(customer);
-                }
+                throw new NullReferenceException("Customer already exists");
             }
         }
-        public void DeleteCustomer(Customer customer)
+
+        public Customer SaveCustomer(Customer customer)
         {
             using (var db = new DatabaseContext())
             {
-                db.Customers.Remove(customer);
+                var existing = db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode));
+                if (existing != null)
+                {
+                    existing.CustomerCode = customer.CustomerCode;
+                    existing.Address = customer.Address;
+                    existing.Name = customer.Name;
+                    db.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return customer;
+                }
+                return AddCustomer(customer);
+            }
+        }
+        public Customer DeleteCustomer(Customer customer)
+        {
+            using (var db = new DatabaseContext())
+            {
+                var existing = db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode));
+                if (existing != null)
+                {
+                    db.Customers.Remove(existing);
+                    db.SaveChanges();
+                }
+
+                return null;
             }   
         }
     }

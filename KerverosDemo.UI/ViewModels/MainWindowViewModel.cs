@@ -1,9 +1,10 @@
 ﻿using KerverosDemo.Entities;
 using KerverosDemo.Services;
 using KerverosDemo.UI.Common;
+using Prism.Commands;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace KerverosDemo.UI.ViewModels
@@ -13,11 +14,17 @@ namespace KerverosDemo.UI.ViewModels
         public MainWindowViewModel()
         {
             Customers = new ObservableCollection<Customer>();
+            AddCustomerCommand = new DelegateCommand(OnAddCustomer);
+            SaveCustomerCommand = new DelegateCommand(OnSaveCustomer);
+            DeleteCustomerCommand = new DelegateCommand(OnDeleteCustomer);
         }
+                
 
         public ObservableCollection<Customer> Customers { get; set; }
-        private Customer selectedCustomer; 
-
+        private Customer selectedCustomer;
+        public DelegateCommand AddCustomerCommand { get; set; }
+        public DelegateCommand SaveCustomerCommand { get; set; }
+        public DelegateCommand DeleteCustomerCommand { get; set; }
         public Customer SelectedCustomer
         {
             get
@@ -37,6 +44,47 @@ namespace KerverosDemo.UI.ViewModels
             foreach (Customer cust in new CustomerService().GetCustomers().ToList())
             {
                 Customers.Add(cust);
+            }
+        }
+
+        private void OnAddCustomer()
+        {
+            SelectedCustomer = new Customer();
+        }
+
+        private void OnSaveCustomer()
+        {
+            var service = new CustomerService();
+            var c = service.SaveCustomer(SelectedCustomer);
+            if(c!= null)
+            {
+                var existing = Customers.FirstOrDefault(s => s.CustomerCode.Equals(c.CustomerCode));
+                if(existing == null)
+                {
+                    Customers.Add(c);
+                    return;
+                }
+                existing.CustomerCode = c.CustomerCode;
+                existing.Address = c.Address;
+                existing.Name = c.Name;
+            }
+        }
+
+        private void OnDeleteCustomer()
+        {
+            try
+            {
+                var service = new CustomerService();
+                service.DeleteCustomer(SelectedCustomer);
+                var existing = Customers.FirstOrDefault(s => s.CustomerCode.Equals(SelectedCustomer.CustomerCode));
+                if (existing != null)
+                {
+                    Customers.Remove(SelectedCustomer);
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.WriteLine(e);
             }
         }
     }
