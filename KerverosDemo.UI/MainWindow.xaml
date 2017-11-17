@@ -8,6 +8,7 @@
         prism:ViewModelLocator.AutoWireViewModel="False"
     mc:Ignorable = "d"
         d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+    
     Title = "MainWindow" Height = "350" Width = "525">
 
     <Grid Name="rootGrid">
@@ -19,14 +20,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding Customers}" Grid.Column="0" Grid.Row="0"
+        <ListView ItemsSource="{Binding Customers}" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True"
                   SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Name"/>
         <UniformGrid Grid.Column="1" Grid.Row="0" Rows="3" Columns="2" DataContext="{Binding SelectedCustomer}" VerticalAlignment="Top">
             <Label Content="Code" />
-            <TextBox Text="{Binding CustomerCode}" TextAlignment="Justify" FontSize="12"/>
-            <Label Content="Name" />
-            <TextBox Text="{Binding Name}" />
+            <TextBox Text="{Binding CustomerCode}"/>
+            <Label Content="Name"/>
+            <TextBox Text="{Binding Name}"/>
             <Label Content="Address" />
             <TextBox Text="{Binding Address}"/>
         </UniformGrid>

@@ -56,17 +56,26 @@ namespace KerverosDemo.UI.ViewModels
         {
             var service = new CustomerService();
             var c = service.SaveCustomer(SelectedCustomer);
-            if(c!= null)
+            if(c!= null && c.CustomerCode != null && c.CustomerCode != string.Empty)
             {
-                var existing = Customers.FirstOrDefault(s => s.CustomerCode.Equals(c.CustomerCode));
-                if(existing == null)
+                try
                 {
-                    Customers.Add(c);
-                    return;
+                    var existing = Customers.FirstOrDefault(s => s.CustomerCode.Equals(c.CustomerCode));
+                    if (existing == null && (c.CustomerCode != string.Empty || c.CustomerCode != null))
+                    {
+                        Customers.Add(c);
+                        return;
+                    }
+                    existing.CustomerCode = c.CustomerCode;
+                    existing.Address = c.Address;
+                    existing.Name = c.Name;
                 }
-                existing.CustomerCode = c.CustomerCode;
-                existing.Address = c.Address;
-                existing.Name = c.Name;
+                catch (System.Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+                return;
+                
             }
         }
 
@@ -77,14 +86,13 @@ namespace KerverosDemo.UI.ViewModels
                 var service = new CustomerService();
                 service.DeleteCustomer(SelectedCustomer);
                 var existing = Customers.FirstOrDefault(s => s.CustomerCode.Equals(SelectedCustomer.CustomerCode));
-                if (existing != null)
-                {
-                    Customers.Remove(SelectedCustomer);
-                }
+                Customers.Remove(SelectedCustomer);
+                
             }
             catch (System.Exception e)
             {
                 Debug.WriteLine(e);
+                
             }
         }
     }

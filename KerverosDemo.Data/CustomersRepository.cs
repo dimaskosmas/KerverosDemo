@@ -28,8 +28,10 @@ namespace KerverosDemo.Data
         {
             using (var db = new DatabaseContext())
             {
-                var existing = db.Customers.FirstOrDefault(s=> s.CustomerCode.Equals(customer.CustomerCode));
-                if (existing == null)
+
+                //var existing = db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode));
+                
+                if (db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode)) == null && customer.CustomerCode != null && customer.CustomerCode != string.Empty)
                 {
                     try
                     {
@@ -41,9 +43,10 @@ namespace KerverosDemo.Data
                     {
 
                         Debug.WriteLine(e);
+
                     }
                 }
-                throw new NullReferenceException("Customer already exists");
+                return customer;           
             }
         }
 
@@ -51,19 +54,28 @@ namespace KerverosDemo.Data
         {
             using (var db = new DatabaseContext())
             {
-                var existing = db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode));
-                if (existing != null)
+                try
                 {
-                    existing.CustomerCode = customer.CustomerCode;
-                    existing.Address = customer.Address;
-                    existing.Name = customer.Name;
-                    db.Entry(existing).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return customer;
+                    var existing = db.Customers.FirstOrDefault(s => s.CustomerCode.Equals(customer.CustomerCode));
+                    if (existing != null && customer.CustomerCode != null && customer.CustomerCode != "")
+                    {
+                        existing.CustomerCode = customer.CustomerCode;
+                        existing.Address = customer.Address;
+                        existing.Name = customer.Name;
+                        db.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        return customer;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                    Debug.WriteLine(e);
                 }
                 return AddCustomer(customer);
             }
         }
+
         public Customer DeleteCustomer(Customer customer)
         {
             using (var db = new DatabaseContext())
